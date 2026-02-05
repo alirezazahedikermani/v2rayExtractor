@@ -54,6 +54,7 @@ TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
 TELEGRAM_CHAT_ID = os.getenv('TELEGRAM_CHAT_ID')
 TELEGRAM_CHANNEL_ID = os.getenv('TELEGRAM_CHANNEL_ID')
 SUB_CHECKER_DIR = Path("sub-checker")
+OLDCONFIGS_DIR = Path("oldconfigs")
 
 def full_unquote(s: str) -> str:
 
@@ -277,19 +278,19 @@ def main():
     unique_new_configs = sorted(list(set(all_raw_configs)))
     logging.info(f"Collected {len(unique_new_configs)} unique new configs from Telegram.")
 
-    logging.info("Step 2: Reading previously checked configs from 'mix/sub.html'...")
+    logging.info("Step 2: Reading previously checked configs from 'oldconfigs/configs.txt'...")
     previous_configs = []
-    previous_mix_file = Path("mix/sub.html")
-    if previous_mix_file.is_file():
+    previous_configs_file = OLDCONFIGS_DIR / "configs.txt"
+    if previous_configs_file.is_file():
         try:
-            previous_configs = previous_mix_file.read_text(encoding="utf-8").splitlines()
+            previous_configs = previous_configs_file.read_text(encoding="utf-8").splitlines()
             previous_configs = [line.strip() for line in previous_configs if '://' in line]
             previous_configs = clean_previous_configs(previous_configs)
             logging.info(f"Successfully read {len(previous_configs)} previously checked configs.")
         except Exception as e:
-            logging.error(f"Could not read or process '{previous_mix_file}': {e}")
+            logging.error(f"Could not read or process '{previous_configs_file}': {e}")
     else:
-        logging.info("No previous 'mix/sub.html' file found. Proceeding with new configs only.")
+        logging.info("No previous 'oldconfigs/configs.txt' file found. Proceeding with new configs only.")
 
     # Filter out configs from unique_new_configs that already exist in previous_configs
     if previous_configs:
@@ -317,6 +318,14 @@ def main():
 
     logging.info("Step 5: Processing, saving results, and getting counts...")
     protocol_counts = process_and_save_results(checked_configs)
+
+    # Save configs to oldconfigs for future runs
+    if checked_configs:
+        OLDCONFIGS_DIR.mkdir(exist_ok=True)
+        oldconfigs_file = OLDCONFIGS_DIR / "configs.txt"
+        oldconfigs_file.write_text("\n".join(checked_configs), encoding="utf-8")
+        logging.info(f"Saved {len(checked_configs)} configs to '{oldconfigs_file}'")
+
     if SEND_TO_TELEGRAM:
         logging.info("Flag 'sendToTelegram' is true. Proceeding with Telegram notifications.")
 
