@@ -291,6 +291,14 @@ def main():
     else:
         logging.info("No previous 'mix/sub.html' file found. Proceeding with new configs only.")
 
+    # Filter out configs from unique_new_configs that already exist in previous_configs
+    if previous_configs:
+        previous_configs_set = set(previous_configs)
+        original_count = len(unique_new_configs)
+        unique_new_configs = [config for config in unique_new_configs if config not in previous_configs_set]
+        filtered_count = original_count - len(unique_new_configs)
+        logging.info(f"Filtered out {filtered_count} duplicate configs that already existed in previous configs.")
+        logging.info(f"Remaining new unique configs: {len(unique_new_configs)}")
 
     logging.info("Step 3: Merging new and previous configs...")
     combined_configs = unique_new_configs + previous_configs
