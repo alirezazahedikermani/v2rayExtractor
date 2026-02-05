@@ -46,11 +46,11 @@ TELEGRAM_URLS = [
     "https://t.me/s/V2rayNg_madam", "https://t.me/s/v2boxxv2rayng", "https://t.me/s/configshub2",
     "https://t.me/s/v2ray_configs_pool", "https://t.me/s/hope_net", "https://t.me/s/everydayvpn",
     "https://t.me/s/v2nodes", "https://t.me/s/shadowproxy66", "https://t.me/s/free_nettm", "https://t.me/s/wiki_tajrobe", "https://t.me/s/V2ray20261", "https://t.me/s/argooo_vpnn", "https://t.me/s/vmessiraan",
-    "https://t.me/s/AzadNet",
+    "https://t.me/s/AzadNet", "https://raw.githubusercontent.com/Epodonios/v2ray-configs/main/All_Configs_Sub.txt",
 ]
 
 BASE64_URLS = [
-    "https://raw.githubusercontent.com/Epodonios/v2ray-configs/main/All_Configs_Sub.txt",
+    "https://raw.githubusercontent.com/AzadNetCH/Clash/refs/heads/main/AzadNet.txt","https://sub.shadowproxy66.workers.dev/sub/be80a76c-6044-417c-9bff-e587f9380d05#ShadowProxy66(1)","https://sub.shadowproxy66.workers.dev/sub/214abfe9-791e-44ba-bd8e-0afe298119f6#ShadowProxy66(2)",
 ]
 
 SEND_TO_TELEGRAM = os.getenv('SEND_TO_TELEGRAM', 'false').lower() == 'true'
@@ -416,5 +416,6 @@ def main():
 if __name__ == "__main__":
 
     main()
+
 
 
