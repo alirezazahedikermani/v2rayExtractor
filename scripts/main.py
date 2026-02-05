@@ -46,7 +46,11 @@ TELEGRAM_URLS = [
     "https://t.me/s/V2rayNg_madam", "https://t.me/s/v2boxxv2rayng", "https://t.me/s/configshub2",
     "https://t.me/s/v2ray_configs_pool", "https://t.me/s/hope_net", "https://t.me/s/everydayvpn",
     "https://t.me/s/v2nodes", "https://t.me/s/shadowproxy66", "https://t.me/s/free_nettm", "https://t.me/s/wiki_tajrobe", "https://t.me/s/V2ray20261", "https://t.me/s/argooo_vpnn", "https://t.me/s/vmessiraan",
-    "https://t.me/s/AzadNet", "https://raw.githubusercontent.com/Epodonios/v2ray-configs/main/All_Configs_Sub.txt"
+    "https://t.me/s/AzadNet",
+]
+
+BASE64_URLS = [
+    "https://raw.githubusercontent.com/Epodonios/v2ray-configs/main/All_Configs_Sub.txt",
 ]
 
 SEND_TO_TELEGRAM = os.getenv('SEND_TO_TELEGRAM', 'false').lower() == 'true'
@@ -139,6 +143,61 @@ def scrape_configs_from_url(url: str) -> List[str]:
     except Exception as e:
         logging.error(f"Could not fetch or parse {url}: {e}")
         return []
+
+
+def scrape_configs_from_base64_url(url: str) -> List[str]:
+    configs = []
+    try:
+        response = requests.get(url, timeout=20)
+        response.raise_for_status()
+
+        content = response.text.strip()
+
+        # Add padding if needed and decode base64
+        content += '=' * (-len(content) % 4)
+        try:
+            decoded_content = base64.b64decode(content).decode('utf-8')
+        except Exception:
+            # If decoding fails, try treating content as plain text
+            decoded_content = content
+
+        pattern = r'((?:vmess|vless|ss|hy2|trojan|hysteria2)://[^\s<>"\'`]+)'
+        found_configs = re.findall(pattern, decoded_content)
+
+        new_tag = ">>SUB"
+
+        for config in found_configs:
+            if config.startswith("vmess://"):
+                try:
+                    base_part = config.split('#', 1)[0]
+                    encoded_json = base_part.replace("vmess://", "")
+                    encoded_json += '=' * (-len(encoded_json) % 4)
+
+                    decoded_bytes = base64.b64decode(encoded_json)
+
+                    try:
+                        decoded_json = decoded_bytes.decode("utf-8")
+                    except UnicodeDecodeError:
+                        decoded_json = decoded_bytes.decode("latin-1")
+
+                    vmess_data = json.loads(decoded_json)
+                    vmess_data["ps"] = new_tag
+
+                    updated_json = json.dumps(vmess_data, separators=(',', ':'))
+                    updated_b64 = base64.b64encode(updated_json.encode('utf-8')).decode('utf-8').rstrip('=')
+                    configs.append("vmess://" + updated_b64)
+                except Exception as e:
+                    logging.warning(f"Could not parse vmess config, skipping: {config[:50]}... Error: {e}")
+            else:
+                base_uri = config.split('#', 1)[0]
+                configs.append(f"{base_uri}#{new_tag}")
+
+        logging.info(f"Found and re-tagged {len(configs)} configs from base64 URL: {url}")
+        return configs
+    except Exception as e:
+        logging.error(f"Could not fetch or parse base64 URL {url}: {e}")
+        return []
+
 
 def run_sub_checker(input_configs: List[str]) -> List[str]:
 
@@ -268,15 +327,16 @@ def process_and_save_results(checked_configs: List[str]) -> Dict[str, int]:
 def main():
     logging.info("--- Starting V2Ray Extractor ---")
 
-    logging.info("Step 1: Scraping new configs from Telegram channels...")
+    logging.info("Step 1: Scraping new configs from Telegram channels and base64 URLs...")
     all_raw_configs = []
     with ThreadPoolExecutor(max_workers=20) as executor:
         future_to_url = {executor.submit(scrape_configs_from_url, url): url for url in TELEGRAM_URLS}
+        future_to_url.update({executor.submit(scrape_configs_from_base64_url, url): url for url in BASE64_URLS})
         for future in future_to_url:
             all_raw_configs.extend(future.result())
 
     unique_new_configs = sorted(list(set(all_raw_configs)))
-    logging.info(f"Collected {len(unique_new_configs)} unique new configs from Telegram.")
+    logging.info(f"Collected {len(unique_new_configs)} unique new configs from Telegram and base64 URLs.")
 
     logging.info("Step 2: Reading previously checked configs from 'oldconfigs/configs.txt'...")
     previous_configs = []
