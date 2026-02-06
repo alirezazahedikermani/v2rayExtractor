@@ -304,7 +304,9 @@ def process_and_save_results(checked_configs: List[str]) -> Dict[str, int]:
             file_path.write_text("\n".join(configs), encoding="utf-8")
             logging.info(f"Saved {len(configs)} configs to '{file_path}'")
 
-    Path("mix/sub.html").write_text("\n".join(checked_configs), encoding="utf-8")
+    # URL-encode ">>" to "%3E%3E" for sub.html
+    encoded_configs = [config.replace(">>", "%3E%3E") for config in checked_configs]
+    Path("mix/sub.html").write_text("\n".join(encoded_configs), encoding="utf-8")
     logging.info(f"Saved {len(checked_configs)} configs to 'mix/sub.html'")
 
     for loc_code, configs in configs_by_location.items():
