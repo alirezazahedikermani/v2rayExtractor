@@ -46,7 +46,7 @@ TELEGRAM_URLS = [
     "https://t.me/s/V2rayNg_madam", "https://t.me/s/v2boxxv2rayng", "https://t.me/s/configshub2",
     "https://t.me/s/v2ray_configs_pool", "https://t.me/s/hope_net", "https://t.me/s/everydayvpn",
     "https://t.me/s/v2nodes", "https://t.me/s/shadowproxy66", "https://t.me/s/free_nettm", "https://t.me/s/wiki_tajrobe", "https://t.me/s/V2ray20261", "https://t.me/s/argooo_vpnn", "https://t.me/s/vmessiraan",
-    "https://t.me/s/AzadNet", 
+    "https://t.me/s/AzadNet", "https://t.me/s/config_proxy", "https://t.me/s/filtershekan_channel", "https://t.me/s/NETMelliAnti", "https://t.me/s/Outline_ir"
 ]
 
 SEND_TO_TELEGRAM = os.getenv('SEND_TO_TELEGRAM', 'false').lower() == 'true'
@@ -338,3 +338,4 @@ def main():
 if __name__ == "__main__":
 
     main()
+
