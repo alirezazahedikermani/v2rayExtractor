@@ -1,8 +1,8 @@
-trojan://M08tvzYWtUEJNtbpHp@nl-4.tr202512.com:443?allowInsecure=1#>>SUB
-trojan://humanity@188.114.98.0:443?path=%252fassignment&security=tls&insecure=1&host=www.creationlong.org&type=ws&allowInsecure=1&sni=www.creationlong.org#>>SUB
-vless://098fd515-29de-4d74-b77d-d8ab878a7e2c@lucy.ns.cloudflare.com:443?allowInsecure=1&encryption=none&host=rivvers.info&path=%2Fresgdws&security=tls&sni=rivvers.info&type=ws#>>SUB
-vless://1041e05d-ecb9-4fe1-bde2-429abff13e8f@113.30.152.46:443?security=reality&type=tcp&headerType=&path=&host=&flow=xtls-rprx-vision&sni=telegavpn.com&fp=&pbk=WvNaAxI0W__qfUKbtysH4IwF155YENlv3PG6crCmPkA&sid=#>>@config_proxy
-vless://14b02e2a-8930-4afb-8412-ea4a4954ca5b@43.165.191.25:19457?encryption=none&security=tls&sni=ylnhh.cc.cd&fp=chrome&insecure=0&allowInsecure=0&type=ws&host=ylnhh.cc.cd&path=%2FTelegram%F0%9F%87%A8%F0%9F%87%B3%2B%40WangCai2#>>SUB
-vless://478cc26d-16b3-4fdd-be64-60d5a58c1622@172.64.146.37:80?encryption=none&host=tt.andishehparenting.com&path=/&security=none&type=ws#>>SUB
-vless://14b02e2a-8930-4afb-8412-ea4a4954ca5b@8.218.226.31:443?type=ws&security=tls&sni=ylnhh.cc.cd&path=/Telegram#>>@config_proxy
-vmess://eyJ2IjoiMiIsInBzIjoiPj5TVUIiLCJhZGQiOiJ2MTIuaGRhY2QuY29tIiwicG9ydCI6IjMwODEyIiwidHlwZSI6Im5vbmUiLCJpZCI6ImNiYjNmODc3LWQxZmItMzQ0Yy04N2E5LWQxNTNiZmZkNTQ4NCIsImFpZCI6IjAiLCJuZXQiOiJ0Y3AiLCJwYXRoIjoiLz9CSUFfVEVMRUdSQU1AQVpBUkJBWUpBQjFfQVpBUkJBWUpBQjFfQVpBUkJBWUpBQjFfQVpBUkJBWUpBQjE/ZWQ9MjU2MCIsImhvc3QiOiJBWkVSQi5ORVQiLCJ0bHMiOiIiLCJza2lwLWNlcnQtdmVyaWZ5Ijp0cnVlfQ
+vless://6202b230-417c-4d8e-b624-0f71afa9c75d@146.59.229.78:8443?allowInsecure=1&encryption=none&host=sni.111000.v6.navy&security=tls&sni=sni.111000.v6.navy&type=ws&path=/XIXVPN?ed=2560#>>@configshub2
+vless://8f1b0daf-81ee-4736-bfd9-f5bf2830cd45@77.83.245.135:34205/?type=tcp&encryption=none#>>@config_proxy
+vless://029cf202-020c-42a5-8186-1a831c8322c5@192.65.217.24:80?encryption=none&security=none&type=ws&host=rain.leemurda187.xyz&path=%2Fvless%3Fed%3D2560%26Telegram%F0%9F%87%A8%F0%9F%87%B3%40WangCai2#>>@config_proxy
+vless://f2a73750-3087-48ff-a763-1348c15dce68@medium.com:443?security=tls&sni=rAyAn-007.mAxImA.DpDnS.OrG&allowInsecure=1&fp=chrome&type=ws&path=/XIXVPN?ed=2560&host=rAyAn-007.mAxImA.DpDnS.OrG&encryption=none#>>@configshub2
+vmess://eyJ2IjoiMiIsInBzIjoiPj5AY29uZmlnX3Byb3h5IiwiYWRkIjoiNjYuMTYzLjExNy41OCIsInBvcnQiOjIyMzI0LCJpZCI6IjA0NjIxYmFlLWFiMzYtMTFlYy1iOTA5LTAyNDJhYzEyMDAwMiIsIm5ldCI6InRjcCIsInR5cGUiOiJub25lIn0
+vless://f7b19108-cb70-4b81-ada4-aabda9b0c83e@67.159.56.58:443/?type=tcp&encryption=none&flow=xtls-rprx-vision&sni=stats.vk-portal.net&fp=chrome&security=reality&pbk=-LOwNJMRG_3cf3qfUV3cqqRgMIBtHVEmL_T6oyiCfUY&sid=&packetEncoding=xudp#>>@config_proxy
+vmess://eyJhZGQiOiI4LjIxOC41Mi41IiwiYWlkIjowLCJob3N0IjoiIiwiaWQiOiIxZjJkYWY0My1mZjkwLTRkZjktOTI3Ni1kZmI4NDg2ZDcyYmMiLCJuZXQiOiJ3cyIsInBhdGgiOiIvIiwicG9ydCI6NDQzLCJwcyI6Ij4+QGNvbmZpZ3NodWIyIiwidGxzIjoidGxzIiwidHlwZSI6ImF1dG8iLCJzZWN1cml0eSI6ImF1dG8iLCJza2lwLWNlcnQtdmVyaWZ5IjpmYWxzZSwic25pIjoibjE3NjEyMTQ5MTUubXY3d2gudGVjaCJ9
+vmess://eyJhZGQiOiIxODguMTE0Ljk2LjMiLCJhaWQiOjAsImhvc3QiOiJzeTQuNjIwNzIwLnh5eiIsImlkIjoiNTE2ZDhhN2EtM2YwYi00MWQzLWJhZDAtMjQ2MTE2MzgxNTE2IiwibmV0Ijoid3MiLCJwYXRoIjoiLyIsInBvcnQiOjQ0MywicHMiOiI+PkBjb25maWdfcHJveHkiLCJ0bHMiOiJ0bHMiLCJ0eXBlIjoiYXV0byIsInNlY3VyaXR5IjoiYXV0byIsInNraXAtY2VydC12ZXJpZnkiOmZhbHNlLCJzbmkiOiJzeTQuNjIwNzIwLnh5eiJ9
