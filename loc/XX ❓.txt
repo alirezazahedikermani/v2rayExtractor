@@ -1,1 +1,11 @@
-hysteria2://dongtaiwang.com@163.172.113.118:40022?sni=www.microsoft.com&insecure=1#>>@v2ray_configs_pool
+trojan://e70c5584-bb99-4526-9374-f3630f732e0e@usrna.osaip.net:25055?allowInsecure=0&peer=&sni=&type=grpc&serviceName=violet#>>@v2ray_configs_pool
+trojan://e70c5584-bb99-4526-9374-f3630f732e0e@jplic.osaip.net:25055?allowInsecure=0&peer=&sni=&type=grpc&serviceName=violet#>>@v2ray_configs_pool
+trojan://humanity@104.18.13.149:443?allowInsecure=1&alpn=http%2F1.1&fp=chrome&host=www.calmloud.com&path=%2Fassignment&sni=www.calmloud.com&type=ws#>>@oneclickvpnkeys
+trojan://e70c5584-bb99-4526-9374-f3630f732e0e@hkzoa.osaip.net:443?allowInsecure=0&peer=&sni=&type=grpc&serviceName=violet#>>@v2ray_configs_pool
+vless://388a6c57-87e7-420b-afe2-b3eb670fd7da@104.20.6.134:80?encryption=none&host=vip.yaml7.ggff.net&path=%2F+%40ProxyVPN11&security=none&type=ws#>>@oneclickvpnkeys
+vless://3e7f67de-648e-4871-b51a-a225214d41ee@47.243.112.34:443?encryption=none&fp=chrome&pbk=TRP10HqKUXEQ3O-cfsq93DycfBmbJe9KM36yvSa8Mmw&security=reality&sni=api.company-target.com&type=tcp#>>@v2nodes
+vless://6202b230-417c-4d8e-b624-0f71afa9c75d@141.11.203.238:2096?allowInsecure=1&encryption=none&fp=chrome&host=sni.jpmj.dev&path=%2F&security=tls&sni=sni.jpmj.dev&type=ws#>>@oneclickvpnkeys
+vless://6202b230-417c-4d8e-b624-0f71afa9c75d@212.34.148.122:2053?allowInsecure=1&encryption=none&host=sni.111000.indevs.in&security=tls&sni=sni.111000.indevs.in&type=ws#>>@oneclickvpnkeys
+vless://6202b230-417c-4d8e-b624-0f71afa9c75d@212.87.223.196:443?allowInsecure=1&encryption=none&host=sni.111000.dns.army&security=tls&sni=sni.111000.dns.army&type=ws#>>@oneclickvpnkeys
+vless://6202b230-417c-4d8e-b624-0f71afa9c75d@77.238.232.164:2053?allowInsecure=1&encryption=none&host=sni.111000.indevs.in&security=tls&sni=sni.111000.indevs.in&type=ws#>>@oneclickvpnkeys
+vmess://eyJ2IjoiMiIsImFkZCI6InYzMC5oZGFjZC5jb20iLCJwb3J0IjoiMzA4MzAiLCJpZCI6ImNiYjNmODc3LWQxZmItMzQ0Yy04N2E5LWQxNTNiZmZkNTQ4NCIsImFpZCI6IjAiLCJuZXQiOiJ0Y3AiLCJ0eXBlIjoiIiwiaG9zdCI6bnVsbCwicGF0aCI6Ii8iLCJ0bHMiOiIiLCJmcCI6ImlvcyIsInBzIjoiPj5AdjJyYXlfY29uZmlnc19wb29sIn0
