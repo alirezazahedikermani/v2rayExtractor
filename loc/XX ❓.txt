@@ -1,8 +1,2 @@
-vless://388a6c57-87e7-420b-afe2-b3eb670fd7da@104.17.138.164:80?encryption=none&host=vip.yaml7.ggff.net&path=%2F&security=none&type=ws#>>@oneclickvpnkeys
-vless://388a6c57-87e7-420b-afe2-b3eb670fd7da@104.17.72.206:80?encryption=none&host=vip.yaml7.ggff.net&path=%2F%2B%40ProxyVPN11&security=none&type=ws#>>@oneclickvpnkeys
-vless://a5554072-0d6d-4b9a-93b1-9c8726fc2c0b@138.124.32.188:30047?encryption=none&path=%2F&security=none&type=ws#>>@oneclickvpnkeys
-vless://a5554072-0d6d-4b9a-93b1-9c8726fc2c0b@45.92.1.37:30086?encryption=none&security=none&serviceName=gprc&type=grpc#>>@oneclickvpnkeys
-vless://a5554072-0d6d-4b9a-93b1-9c8726fc2c0b@194.87.77.250:30047?encryption=none&path=%2F&security=none&type=ws#>>@oneclickvpnkeys
-vless://a5554072-0d6d-4b9a-93b1-9c8726fc2c0b@45.92.1.37:30047?encryption=none&path=%2F&security=none&type=ws#>>@oneclickvpnkeys
-vless://a5554072-0d6d-4b9a-93b1-9c8726fc2c0b@95.85.248.68:30047?encryption=none&path=%2F&security=none&type=ws#>>@oneclickvpnkeys
-vless://df862b4c-2150-4b36-81ac-405036cf9ff6@162.159.152.227:8443?allowInsecure=1&encryption=none&fp=chrome&host=kalami-eew.pages.dev&path=%2F&security=tls&sni=kalami-eew.pages.dev&type=ws#>>@oneclickvpnkeys
+vmess://eyJhZGQiOiI0Ny4yNDQuMTIwLjE5NyIsImFpZCI6IjAiLCJhbHBuIjoiIiwiZnAiOiIiLCJob3N0IjoiIiwiaWQiOiI4NDVlNmIwOC0yOTE5LTQyOTAtYWRlMC01ZGM3ZGNlYTU5Y2EiLCJpbnNlY3VyZSI6IjAiLCJuZXQiOiJ3cyIsInBhdGgiOiIvYXJraT9lZD0yMDQ4IiwicG9ydCI6IjQ0ODY3IiwicHMiOiI+PkBwZXJzaWFudnBuaHViIiwic2N5IjoiYXV0byIsInNuaSI6IiIsInRscyI6IiIsInR5cGUiOiItLS0iLCJ2IjoiMiIsInNraXAtY2VydC12ZXJpZnkiOnRydWV9
+vmess://eyJ2IjoiMiIsInBzIjoiPj5AdjJub2RlcyIsImFkZCI6InYzMC5oZGFjZC5jb20iLCJwb3J0IjoiMzA4MzAiLCJ0eXBlIjoibm9uZSIsImlkIjoiY2JiM2Y4NzctZDFmYi0zNDRjLTg3YTktZDE1M2JmZmQ1NDg0IiwiYWlkIjoiMCIsIm5ldCI6InRjcCIsInBhdGgiOiIvIiwiaG9zdCI6ImJwYmcuYW5ndXN3ZW4udG9wIiwidGxzIjoiIiwic2tpcC1jZXJ0LXZlcmlmeSI6dHJ1ZX0
