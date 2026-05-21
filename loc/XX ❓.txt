@@ -1,8 +1,1 @@
-vless://b43a13be-150c-4a6a-8501-b71c1b6476fb@srv174.towersflowerss.com:65000?encryption=none&path=%2F&security=none&type=ws#>>@oneclickvpnkeys
-vless://b43a13be-150c-4a6a-8501-b71c1b6476fb@srv181.towersflowerss.com:443?encryption=none&path=%2F&security=none&type=ws#>>@oneclickvpnkeys
-hysteria2://4d092122-268a-4a1a-b23f-83931c5abc3a@flkf2.mangshe.xyz:2056/?insecure=1&sni=flkf2.mangshe.xyz#>>@oneclickvpnkeys
-hysteria2://4d092122-268a-4a1a-b23f-83931c5abc3a@flkf3.mangshe.xyz:2056/?insecure=1&sni=flkf3.mangshe.xyz#>>@oneclickvpnkeys
-hysteria2://4d092122-268a-4a1a-b23f-83931c5abc3a@nlb1.mangshe.xyz:2056/?insecure=1&sni=nlb1.mangshe.xyz#>>@oneclickvpnkeys
-hysteria2://4d092122-268a-4a1a-b23f-83931c5abc3a@nlb3.mangshe.xyz:2056/?insecure=1&sni=nlb3.mangshe.xyz#>>@oneclickvpnkeys
-hysteria2://4d092122-268a-4a1a-b23f-83931c5abc3a@nlb4.mangshe.xyz:2056/?insecure=1&sni=nlb4.mangshe.xyz#>>@oneclickvpnkeys
-hysteria2://4d092122-268a-4a1a-b23f-83931c5abc3a@hl1.mangshe.xyz:2056/?insecure=1&sni=hl1.mangshe.xyz#>>@oneclickvpnkeys
+vless://3e40c799-dc8f-4155-a1bc-6a515f7cd0c2@185.143.233.68:443?encryption=none&type=ws&security=tls&path=%2F&host=backend.parhamm2.ir&sni=backend.parhamm2.ir&fp=random&allowInsecure=1#>>@configshub2
