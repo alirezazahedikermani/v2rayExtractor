@@ -1,2 +1,1 @@
-vless://10e82fcc-94ec-4d09-8855-579bb55b77e4@109.120.133.184:8443?encryption=none&flow=xtls-rprx-vision&fp=&pbk=N0QyBaacGqSpRv_Ib4jsSx5A1kfE8IE1w0HcDB5w1BE&security=reality&sni=www.google.com&type=tcp#>>@oneclickvpnkeys
-vless://ce069292-c8bf-40dd-a6b1-87818a1e64e9@84.22.149.236:8443?encryption=none&host=1-jk1.pages.dev&path=%2F&security=tls&sni=1-jk1.pages.dev&type=ws#>>@oneclickvpnkeys
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpkN3poMmxNclhOSDUrOCs4cEt6bHhpQ1U5Tk4wMjJpaCt1QXl4ajVkNHFvPQ==@102.129.229.85:31700#>>@v2nodes
