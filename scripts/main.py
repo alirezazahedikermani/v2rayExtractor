@@ -77,7 +77,9 @@ TELEGRAM_URLS = [
     "https://t.me/s/sogoandfuckyourlove", "https://t.me/s/lrnbymaa", "https://t.me/s/Express_freevpn", "https://t.me/s/amookashani",
     "https://t.me/s/InfoTech_VK", "https://t.me/s/MTproxy22_v2ray", "https://t.me/s/NetFreedom0", "https://shz.al/~75-@ShadowProxy66",
     "https://raw.githubusercontent.com/SoliSpirit/v2ray-configs/refs/heads/main/all_configs.txt",
-    "https://raw.githubusercontent.com/barry-far/V2ray-config/main/All_Configs_Sub.txt"
+    "https://raw.githubusercontent.com/barry-far/V2ray-config/main/All_Configs_Sub.txt",
+    "https://t.me/s/V2rayRoom",
+    "https://t.me/s/FREECONFIGSPLUS"
 ]
 
 
