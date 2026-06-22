@@ -1,0 +1,2 @@
+vless://f35216e7-a286-44a2-8a0a-2ebf5dfc4778@104.17.168.203:443?path=%2F&security=tls&encryption=none&insecure=0&host=w3090.alireza-zahedikermani.workers.dev&fp=chrome&type=ws&allowInsecure=0&sni=w3090.alireza-zahedikermani.workers.dev#CF%E5%AE%98%E6%96%B9%E4%BC%98%E9%80%8913
+vless://f35216e7-a286-44a2-8a0a-2ebf5dfc4778@104.16.240.130:443?path=%2F&security=tls&encryption=none&insecure=0&host=w3090.alireza-zahedikermani.workers.dev&fp=chrome&type=ws&allowInsecure=0&sni=w3090.alireza-zahedikermani.workers.dev#CF%E5%AE%98%E6%96%B9%E4%BC%98%E9%80%899
