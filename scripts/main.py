@@ -52,8 +52,6 @@ TELEGRAM_URLS = [
     "https://t.me/s/NETMelliAnti", "https://t.me/s/Outline_ir""https://t.me/vmesskhodam", 
     "https://t.me/s/SSRSUB", "https://t.me/s/mtproxy_lists",
     "https://raw.githubusercontent.com/barry-far/V2ray-Config/refs/heads/main/All_Configs_Sub.txt",
-    "https://github.com/sakha1370/OpenRay/raw/refs/heads/main/output/all_valid_proxies.txt",
-    "https://raw.githubusercontent.com/sevcator/5ubscrpt10n/main/protocols/vl.txt",
     "https://raw.githubusercontent.com/yitong2333/proxy-minging/refs/heads/main/v2ray.txt",
     "https://raw.githubusercontent.com/acymz/AutoVPN/refs/heads/main/data/V2.txt",
     "https://raw.githubusercontent.com/miladtahanian/V2RayCFGDumper/refs/heads/main/config.txt",
