@@ -67,7 +67,6 @@ TELEGRAM_URLS = [
     "https://github.com/MhdiTaheri/V2rayCollector_Py/raw/refs/heads/main/sub/Mix/mix.txt",
     "https://github.com/MhdiTaheri/V2rayCollector/raw/refs/heads/main/sub/mix",
     "https://github.com/Argh94/Proxy-List/raw/refs/heads/main/All_Config.txt",
-    "https://raw.githubusercontent.com/shabane/kamaji/master/hub/merged.txt",
     "https://raw.githubusercontent.com/wuqb2i4f/xray-config-toolkit/main/output/base64/mix-uri",
     "https://raw.githubusercontent.com/STR97/STRUGOV/refs/heads/main/STR.BYPASS#STR.BYPASS%F0%9F%91%BE",
     "https://raw.githubusercontent.com/V2RayRoot/V2RayConfig/refs/heads/main/Config/vless.txt",
