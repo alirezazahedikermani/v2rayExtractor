@@ -143,6 +143,8 @@ def scrape_configs_from_url(url: str) -> List[str]:
         channel_name = "@" + url.split("/s/")[1] if "/s/" in url else "SUB"
         new_tag = f">>{channel_name}"
 
+        reponseLength = len(response.content)
+        
         soup = BeautifulSoup(response.content, 'html.parser')
         all_text_content = "\n".join(tag.get_text('\n') for tag in soup.find_all(['div', 'code', 'blockquote', 'pre']))
 
@@ -176,7 +178,7 @@ def scrape_configs_from_url(url: str) -> List[str]:
                 base_uri = config.split('#', 1)[0]
                 configs.append(f"{base_uri}#{new_tag}")
 
-        logging.info(f"Found and re-tagged {len(configs)} configs in {url}")
+        logging.info(f"Found and re-tagged {len(configs)} configs in {url} - response length: {responseLength}")
         return configs
     except Exception as e:
         logging.error(f"Could not fetch or parse {url}: {e}")
