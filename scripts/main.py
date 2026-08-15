@@ -206,18 +206,22 @@ def scrape_configs_from_base64_url(url: str) -> List[str]:
         response = requests.get(url, timeout=20)
         response.raise_for_status()
 
-        content = response.text.strip()
-
-        # Add padding if needed and decode base64
-        content += '=' * (-len(content) % 4)
-        try:
-            decoded_content = base64.b64decode(content).decode('utf-8')
-        except Exception:
-            # If decoding fails, try treating content as plain text
-            decoded_content = content
+        content = html.unescape(response.text.strip())
 
         pattern = r'((?:vmess|vless|ss|hy2|trojan|hysteria2)://[^\s<>"\'`]+)'
-        found_configs = re.findall(pattern, decoded_content)
+
+        # Plain-text subscriptions are common, and base64.b64decode silently
+        # discards non-alphabet characters instead of raising, so a plain-text
+        # body can "decode" into garbage. Take the raw body whenever it already
+        # contains configs, and only fall back to base64 otherwise.
+        found_configs = re.findall(pattern, content)
+        if not found_configs:
+            padded = content + '=' * (-len(content) % 4)
+            try:
+                decoded_content = base64.b64decode(padded).decode('utf-8')
+            except Exception:
+                decoded_content = content
+            found_configs = re.findall(pattern, html.unescape(decoded_content))
 
         new_tag = ">>SUB"
 
