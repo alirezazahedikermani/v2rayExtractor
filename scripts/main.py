@@ -58,9 +58,9 @@ TELEGRAM_URLS = [
     "https://raw.githubusercontent.com/roosterkid/openproxylist/main/V2RAY_RAW.txt",
     "https://raw.githubusercontent.com/YasserDivaR/pr0xy/refs/heads/main/ShadowSocks2021.txt",
     "https://raw.githubusercontent.com/mohamadfg-dev/telegram-v2ray-configs-collector/refs/heads/main/category/vless.txt",
-    "https://raw.githubusercontent.com/mheidari98/.proxy/refs/heads/main/vless",
+   
     "https://raw.githubusercontent.com/youfoundamin/V2rayCollector/main/mixed_iran.txt",
-    "https://raw.githubusercontent.com/mheidari98/.proxy/refs/heads/main/all",
+   
     "https://github.com/Kwinshadow/TelegramV2rayCollector/raw/refs/heads/main/sublinks/mix.txt",
     "https://github.com/miladtahanian/Config-Collector/raw/refs/heads/main/vless_iran.txt",
     "https://raw.githubusercontent.com/Pawdroid/Free-servers/refs/heads/main/sub",
@@ -86,6 +86,9 @@ BASE64_URLS = [
     "https://raw.githubusercontent.com/mahsanet/MahsaFreeConfig/refs/heads/main/mci/sub_1.txt",
     "https://raw.githubusercontent.com/mahsanet/MahsaFreeConfig/refs/heads/main/mci/sub_2.txt",
     "https://raw.githubusercontent.com/mahsanet/MahsaFreeConfig/refs/heads/main/mci/sub_3.txt",
+     "https://raw.githubusercontent.com/mheidari98/.proxy/refs/heads/main/vless",
+     "https://raw.githubusercontent.com/mheidari98/.proxy/refs/heads/main/all",
+    
 ]
 
 SEND_TO_TELEGRAM = os.getenv('SEND_TO_TELEGRAM', 'false').lower() == 'true'
