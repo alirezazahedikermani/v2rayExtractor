@@ -178,7 +178,7 @@ def scrape_configs_from_url(url: str) -> List[str]:
                 base_uri = config.split('#', 1)[0]
                 configs.append(f"{base_uri}#{new_tag}")
 
-        logging.info(f"Found and re-tagged {len(configs)} configs in {url} - response length: {reponseLength}")
+        logging.info(f"Found and re-tagged {len(configs)} configs in {url} - response length: {reponseLength} - found_configs: {len(found_configs)}")
         return configs
     except Exception as e:
         logging.error(f"Could not fetch or parse {url}: {e}")
