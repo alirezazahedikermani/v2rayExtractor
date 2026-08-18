@@ -4,7 +4,6 @@ ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpRQ1hEeHVEbFRUTUQ3anRnSFVqSW9q@193.29.139.168
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpRQ1hEeHVEbFRUTUQ3anRnSFVqSW9q@193.29.139.168:8080#%3E%3E@Express_freevpn
 vless://e0454af2-6fe9-4983-a55d-05e1da202602@199.232.78.159:443?security=tls&sni=ssl.fastly.com&fp=qq&type=ws&path=/&host=lsjaoijji.global.ssl.fastly.neT.&encryption=none#%3E%3E@oneclickvpnkeys
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpRQ1hEeHVEbFRUTUQ3anRnSFVqSW9q@193.29.139.168:8080#%3E%3E@Express_freevpn
-vless://d361072e-9e0e-4e2d-8ec7-2a4189b5b23a@172.64.155.209:2053?security=tls&sni=ov.iran-servers.shop&allowInsecure=1&fp=chrome&type=ws&path=/J5aLQOY1R9ONWYCM&host=ov.iran-servers.shop&encryption=none#%3E%3E@outline_vpn
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpUV0c3SjFLUjVLc1BhVjVxWkkrcmlldWVLeHhhZlpTcENI@45.77.232.213:15675#%3E%3E@MTproxy22_v2ray
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpRQ1hEeHVEbFRUTUQ3anRnSFVqSW9q@193.29.139.168:8080#%3E%3E@Express_freevpn
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpUV0c3SjFLUjVLc1BhVjVxWkkrcmlldWVLeHhhZlpTcENI@45.77.232.213:15675#%3E%3E@MTproxy22_v2ray
