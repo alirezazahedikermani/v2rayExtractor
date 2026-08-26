@@ -100,7 +100,7 @@ TELEGRAM_CHANNEL_ID = os.getenv('TELEGRAM_CHANNEL_ID')
 SUB_CHECKER_DIR = Path("sub-checker")
 
 # Upper bound on how many configs are handed to the sub-checker in one run.
-MAX_CONFIGS_TO_CHECK = 200
+MAX_CONFIGS_TO_CHECK = 500
 
 OLDCONFIGS_DIR = Path("oldconfigs")
 
