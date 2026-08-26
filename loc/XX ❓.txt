@@ -1,11 +1,5 @@
-vless://c8510c22-2e66-ebd8-7052-a2984fecc072@inetchnl-production-b303.up.railway.app:443?encryption=none&type=ws&host=inetchnl-production-b303.up.railway.app&path=%2Fws%2Fc8510c22-2e66-ebd8-7052-a2984fecc072&security=tls&alpn=h2%2Chttp%2F1.1%2Ch3&fp=chrome&sni=inetchnl-production-b303.up.railway.app#>>SUB
-vmess://eyJ2IjoiMiIsInBzIjoiPj5TVUIiLCJhZGQiOiJyZW5kZXJlci1zdHJlYW0tMi02Mi5taXJyYS5ub3ciLCJwb3J0IjoiNDQzIiwiaWQiOiJkYjUwYTIwZS03ZmY1LTRlNzAtOTQ4Zi0xN2NjOWNhN2MxNTQiLCJhaWQiOiIwIiwic2N5IjoiYXV0byIsIm5ldCI6IndzIiwidHlwZSI6Im5vbmUiLCJob3N0IjoiIiwicGF0aCI6Ii9hcGkvdjEvZ3B1LXN0cmVhbS9zb2NrZXQiLCJ0bHMiOiJ0bHMiLCJzbmkiOiIiLCJ0ZXN0X25hbWUiOiIxOCJ9
-vless://fe3489e2-6b59-4adb-91f3-e34300a13d5a@87.249.54.48:2200?encryption=none&type=ws&security=none&path=%2Fv1&host=rzd.ru&fp=qq#>>SUB
-vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206.20:23576?encryption=none&flow=xtls-rprx-vision&security=reality&sni=fuck.rkn&fp=chrome&pbk=1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s&sid=01&type=tcp&headerType=none#>>SUB
-trojan://7e70223b-f331-41d5-9313-02b8d2df2885@45.67.201.210:20065/?type=tcp&security=tls&sni=hk.catxstar.com&allowInsecure=1#>>SUB
-vless://a706a230-eca0-04da-ca19-42d8cd10129a@69.46.46.106:443?path=/ws/a706a230-eca0-04da-ca19-42d8cd10129a&security=tls&alpn=http/1.1&encryption=none&host=ivory-horizon-976d-production.up.railway.app&fp=ios&type=ws&sni=ivory-horizon-976d-production.up.railway.app#>>SUB
-vless://caec0d8d-ab2f-4247-b97d-7fb1a34ab195@180.178.60.254:10000?encryption=none&type=raw&headerType=none&security=none#>>SUB
-hysteria2://bce6c821-200d-421f-bf3d-7159e5246ea0@hy2.123266.xyz:33333/?sni=hy2.123266.xyz#>>SUB
-hysteria2://6f7a8009ecf6a12e10d03f9d88493c89@167.179.34.13:55443?insecure=1&sni=gorbachev-th.kvnfreetest.uk#>>SUB
-hysteria2://Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0@85.204.107.174:8080?insecure=1&sni=hopp-romania-new.roxa.org#>>SUB
-hysteria2://9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z@162.249.124.114:8080?insecure=1&sni=hopp-germany-new.ddnsguru.com#>>SUB
+vless://47fcef29-ab4e-4aa6-932b-d95a18f28a4e@104.18.47.113:80?security=none&type=ws&path=/?ed=2560security=tls&host=8nj2r.2k8t.f88.hh.vavava.kdns.fr&packetEncoding=xudp&sni=8nj2r.2k8t.f88.hh.vavava.kdns.fr#>>SUB
+hysteria2://865e271f7c97b549b024255c9d02cebe9cc0c2c070a82b1e11bb11b9cd88dd01@streambox.wwwinternetvideo.click:443?insecure=1&sni=streambox.wwwinternetvideo.click#>>SUB
+hysteria2://OD6gGbGU9a@hys26.wba-pn.ru:443?insecure=1&sni=hys26.wba-pn.ru#>>SUB
+hysteria2://qQe1z5kU8kN6SlKnDt9Ru3Qp@54.255.1.222:443?sni=vk.com#>>SUB
+hysteria2://qQe1z5kU8kN6SlKnDt9Ru3Qp@54.254.241.184:443?insecure=1&sni=vpn-sg-001.fastervpn.world#>>SUB
