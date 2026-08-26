@@ -263,6 +263,19 @@ def scrape_configs_from_base64_url(url: str) -> List[str]:
         return []
 
 
+def select_configs_to_check(configs: List[str]) -> List[str]:
+    """Cap a config list at MAX_CONFIGS_TO_CHECK, sampling at random when over."""
+
+    if len(configs) <= MAX_CONFIGS_TO_CHECK:
+        return configs
+
+    logging.info(
+        f"{len(configs)} configs available, selecting a random "
+        f"{MAX_CONFIGS_TO_CHECK} of them to check."
+    )
+    return random.sample(configs, MAX_CONFIGS_TO_CHECK)
+
+
 def run_sub_checker(input_configs: List[str]) -> List[str]:
 
     if not SUB_CHECKER_DIR.is_dir():
@@ -272,13 +285,6 @@ def run_sub_checker(input_configs: List[str]) -> List[str]:
     normal_txt_path = SUB_CHECKER_DIR / "normal.txt"
     final_txt_path = SUB_CHECKER_DIR / "final.txt"
     cl_py_path = SUB_CHECKER_DIR / "cl.py"
-
-    if len(input_configs) > MAX_CONFIGS_TO_CHECK:
-        logging.info(
-            f"{len(input_configs)} configs available, selecting a random "
-            f"{MAX_CONFIGS_TO_CHECK} of them to check."
-        )
-        input_configs = random.sample(input_configs, MAX_CONFIGS_TO_CHECK)
 
     logging.info(f"Writing {len(input_configs)} configs to '{normal_txt_path}'")
     normal_txt_path.write_text("\n".join(input_configs), encoding="utf-8")
@@ -436,7 +442,6 @@ def main():
 
     logging.info("Step 3: Merging new and previous configs...")
     combined_configs = unique_new_configs 
-    combined_configs2 = unique_new_configs + previous_configs
 
     unique_combined_configs = sorted(list(set(combined_configs)))
     logging.info(f"Total unique configs to be tested: {len(unique_combined_configs)}")
@@ -446,7 +451,8 @@ def main():
         return
 
     logging.info("Step 4: Running the sub-checker...")
-    checked_configs = run_sub_checker(unique_combined_configs)
+    selected_configs = select_configs_to_check(unique_combined_configs)
+    checked_configs = run_sub_checker(selected_configs)
 
     logging.info(f"Sub-checker returned {len(checked_configs)} valid configs.")
 
@@ -457,8 +463,8 @@ def main():
     if checked_configs:
         OLDCONFIGS_DIR.mkdir(exist_ok=True)
         oldconfigs_file = OLDCONFIGS_DIR / "configs.txt"
-        oldconfigs_file.write_text("\n".join(combined_configs2), encoding="utf-8")
-        logging.info(f"Saved {len(checked_configs)} configs to '{oldconfigs_file}'")
+        oldconfigs_file.write_text("\n".join(selected_configs), encoding="utf-8")
+        logging.info(f"Saved {len(selected_configs)} configs to '{oldconfigs_file}'")
 
     if SEND_TO_TELEGRAM:
         logging.info("Flag 'sendToTelegram' is true. Proceeding with Telegram notifications.")
