@@ -1,4 +1,5 @@
 import base64
+import html
 import json
 import logging
 import os
@@ -145,8 +146,22 @@ def scrape_configs_from_url(url: str) -> List[str]:
 
         reponseLength = len(response.content)
         
+        raw_text = response.text
+
         soup = BeautifulSoup(response.content, 'html.parser')
         all_text_content = "\n".join(tag.get_text('\n') for tag in soup.find_all(['div', 'code', 'blockquote', 'pre']))
+
+        # Plain-text endpoints (raw subscription lists) have no such tags, so the
+        # extraction above yields nothing. Fall back to the whole document text,
+        # then to the raw response body.
+        if not all_text_content.strip():
+            all_text_content = soup.get_text('\n')
+        if not all_text_content.strip():
+            all_text_content = raw_text
+
+        # Telegram (and other HTML sources) escape '&' as '&amp;' inside config
+        # links; unescape so query parameters survive intact.
+        all_text_content = html.unescape(all_text_content)
 
         pattern = r'((?:vmess|vless|ss|hy2|trojan|hysteria2)://[^\s<>"\'`]+)'
         found_configs = re.findall(pattern, all_text_content)
@@ -191,18 +206,22 @@ def scrape_configs_from_base64_url(url: str) -> List[str]:
         response = requests.get(url, timeout=20)
         response.raise_for_status()
 
-        content = response.text.strip()
-
-        # Add padding if needed and decode base64
-        content += '=' * (-len(content) % 4)
-        try:
-            decoded_content = base64.b64decode(content).decode('utf-8')
-        except Exception:
-            # If decoding fails, try treating content as plain text
-            decoded_content = content
+        content = html.unescape(response.text.strip())
 
         pattern = r'((?:vmess|vless|ss|hy2|trojan|hysteria2)://[^\s<>"\'`]+)'
-        found_configs = re.findall(pattern, decoded_content)
+
+        # Plain-text subscriptions are common, and base64.b64decode silently
+        # discards non-alphabet characters instead of raising, so a plain-text
+        # body can "decode" into garbage. Take the raw body whenever it already
+        # contains configs, and only fall back to base64 otherwise.
+        found_configs = re.findall(pattern, content)
+        if not found_configs:
+            padded = content + '=' * (-len(content) % 4)
+            try:
+                decoded_content = base64.b64decode(padded).decode('utf-8')
+            except Exception:
+                decoded_content = content
+            found_configs = re.findall(pattern, html.unescape(decoded_content))
 
         new_tag = ">>SUB"
 
