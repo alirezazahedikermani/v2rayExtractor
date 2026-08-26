@@ -3,6 +3,7 @@ import html
 import json
 import logging
 import os
+import random
 import re
 import subprocess
 import time
@@ -97,6 +98,10 @@ TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
 TELEGRAM_CHAT_ID = os.getenv('TELEGRAM_CHAT_ID')
 TELEGRAM_CHANNEL_ID = os.getenv('TELEGRAM_CHANNEL_ID')
 SUB_CHECKER_DIR = Path("sub-checker")
+
+# Upper bound on how many configs are handed to the sub-checker in one run.
+MAX_CONFIGS_TO_CHECK = 200
+
 OLDCONFIGS_DIR = Path("oldconfigs")
 
 def full_unquote(s: str) -> str:
@@ -267,6 +272,13 @@ def run_sub_checker(input_configs: List[str]) -> List[str]:
     normal_txt_path = SUB_CHECKER_DIR / "normal.txt"
     final_txt_path = SUB_CHECKER_DIR / "final.txt"
     cl_py_path = SUB_CHECKER_DIR / "cl.py"
+
+    if len(input_configs) > MAX_CONFIGS_TO_CHECK:
+        logging.info(
+            f"{len(input_configs)} configs available, selecting a random "
+            f"{MAX_CONFIGS_TO_CHECK} of them to check."
+        )
+        input_configs = random.sample(input_configs, MAX_CONFIGS_TO_CHECK)
 
     logging.info(f"Writing {len(input_configs)} configs to '{normal_txt_path}'")
     normal_txt_path.write_text("\n".join(input_configs), encoding="utf-8")
