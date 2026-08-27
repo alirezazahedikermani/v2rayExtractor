@@ -463,8 +463,22 @@ def main():
     if checked_configs:
         OLDCONFIGS_DIR.mkdir(exist_ok=True)
         oldconfigs_file = OLDCONFIGS_DIR / "configs.txt"
-        oldconfigs_file.write_text("\n".join(selected_configs), encoding="utf-8")
-        logging.info(f"Saved {len(selected_configs)} configs to '{oldconfigs_file}'")
+        # Append this run's selection to the previously stored configs, keeping
+        # the old entries and dropping duplicates while preserving order.
+        stored_configs = list(previous_configs)
+        stored_set = set(stored_configs)
+        added = 0
+        for config in selected_configs:
+            if config not in stored_set:
+                stored_set.add(config)
+                stored_configs.append(config)
+                added += 1
+
+        oldconfigs_file.write_text("\n".join(stored_configs), encoding="utf-8")
+        logging.info(
+            f"Added {added} new configs to '{oldconfigs_file}' "
+            f"({len(stored_configs)} total)"
+        )
 
     if SEND_TO_TELEGRAM:
         logging.info("Flag 'sendToTelegram' is true. Proceeding with Telegram notifications.")
