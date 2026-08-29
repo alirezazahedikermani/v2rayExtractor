@@ -494,9 +494,11 @@ def main():
         )
         checked_configs.extend(batch_checked)
 
-        # Store what passed as soon as each batch finishes, so a later failure
-        # cannot lose the working configs found so far.
-        append_configs_to_oldconfigs(batch_checked)
+        # configs.txt keeps every config we collected, healthy or not. Only the
+        # ones that passed the checker reach the published output files, which
+        # process_and_save_results writes from checked_configs below. Appending
+        # per batch means a failure in a later batch cannot lose earlier work.
+        append_configs_to_oldconfigs(batch)
 
     logging.info(f"Sub-checker returned {len(checked_configs)} valid configs in total.")
 
