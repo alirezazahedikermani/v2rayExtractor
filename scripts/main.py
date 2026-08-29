@@ -3,7 +3,6 @@ import html
 import json
 import logging
 import os
-import random
 import re
 import subprocess
 import time
@@ -99,8 +98,9 @@ TELEGRAM_CHAT_ID = os.getenv('TELEGRAM_CHAT_ID')
 TELEGRAM_CHANNEL_ID = os.getenv('TELEGRAM_CHANNEL_ID')
 SUB_CHECKER_DIR = Path("sub-checker")
 
-# Upper bound on how many configs are handed to the sub-checker in one run.
-MAX_CONFIGS_TO_CHECK = 500
+# How many configs are handed to the sub-checker in a single batch. All
+# collected configs are checked, one batch at a time.
+CHECK_BATCH_SIZE = 200
 
 OLDCONFIGS_DIR = Path("oldconfigs")
 
@@ -263,17 +263,41 @@ def scrape_configs_from_base64_url(url: str) -> List[str]:
         return []
 
 
-def select_configs_to_check(configs: List[str]) -> List[str]:
-    """Cap a config list at MAX_CONFIGS_TO_CHECK, sampling at random when over."""
+def append_configs_to_oldconfigs(configs: List[str]) -> int:
+    """Append configs to oldconfigs/configs.txt, keeping existing entries.
 
-    if len(configs) <= MAX_CONFIGS_TO_CHECK:
-        return configs
+    Duplicates are skipped and the original order is preserved. Returns how many
+    configs were actually added.
+    """
 
+    if not configs:
+        return 0
+
+    OLDCONFIGS_DIR.mkdir(exist_ok=True)
+    oldconfigs_file = OLDCONFIGS_DIR / "configs.txt"
+
+    stored_configs = []
+    if oldconfigs_file.is_file():
+        stored_configs = [
+            line.strip()
+            for line in oldconfigs_file.read_text(encoding="utf-8").splitlines()
+            if line.strip()
+        ]
+
+    stored_set = set(stored_configs)
+    added = 0
+    for config in configs:
+        if config not in stored_set:
+            stored_set.add(config)
+            stored_configs.append(config)
+            added += 1
+
+    oldconfigs_file.write_text("\n".join(stored_configs), encoding="utf-8")
     logging.info(
-        f"{len(configs)} configs available, selecting a random "
-        f"{MAX_CONFIGS_TO_CHECK} of them to check."
+        f"Appended {added} configs to '{oldconfigs_file}' "
+        f"({len(stored_configs)} total)"
     )
-    return random.sample(configs, MAX_CONFIGS_TO_CHECK)
+    return added
 
 
 def run_sub_checker(input_configs: List[str]) -> List[str]:
@@ -451,34 +475,35 @@ def main():
         return
 
     logging.info("Step 4: Running the sub-checker...")
-    selected_configs = select_configs_to_check(unique_combined_configs)
-    checked_configs = run_sub_checker(selected_configs)
+    batches = [
+        unique_combined_configs[i:i + CHECK_BATCH_SIZE]
+        for i in range(0, len(unique_combined_configs), CHECK_BATCH_SIZE)
+    ]
+    logging.info(
+        f"Checking {len(unique_combined_configs)} configs in {len(batches)} "
+        f"batch(es) of up to {CHECK_BATCH_SIZE}."
+    )
 
-    logging.info(f"Sub-checker returned {len(checked_configs)} valid configs.")
+    checked_configs = []
+    for batch_number, batch in enumerate(batches, start=1):
+        logging.info(f"Batch {batch_number}/{len(batches)}: checking {len(batch)} configs...")
+        batch_checked = run_sub_checker(batch)
+        logging.info(
+            f"Batch {batch_number}/{len(batches)}: sub-checker returned "
+            f"{len(batch_checked)} valid configs."
+        )
+        checked_configs.extend(batch_checked)
+
+        # configs.txt keeps every config we collected, healthy or not. Only the
+        # ones that passed the checker reach the published output files, which
+        # process_and_save_results writes from checked_configs below. Appending
+        # per batch means a failure in a later batch cannot lose earlier work.
+        append_configs_to_oldconfigs(batch)
+
+    logging.info(f"Sub-checker returned {len(checked_configs)} valid configs in total.")
 
     logging.info("Step 5: Processing, saving results, and getting counts...")
     protocol_counts = process_and_save_results(checked_configs)
-
-    # Save configs to oldconfigs for future runs
-    if checked_configs:
-        OLDCONFIGS_DIR.mkdir(exist_ok=True)
-        oldconfigs_file = OLDCONFIGS_DIR / "configs.txt"
-        # Append this run's selection to the previously stored configs, keeping
-        # the old entries and dropping duplicates while preserving order.
-        stored_configs = list(previous_configs)
-        stored_set = set(stored_configs)
-        added = 0
-        for config in selected_configs:
-            if config not in stored_set:
-                stored_set.add(config)
-                stored_configs.append(config)
-                added += 1
-
-        oldconfigs_file.write_text("\n".join(stored_configs), encoding="utf-8")
-        logging.info(
-            f"Added {added} new configs to '{oldconfigs_file}' "
-            f"({len(stored_configs)} total)"
-        )
 
     if SEND_TO_TELEGRAM:
         logging.info("Flag 'sendToTelegram' is true. Proceeding with Telegram notifications.")
