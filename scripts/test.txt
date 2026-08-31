@@ -85,3 +85,10 @@ trojan://humanity@172.67.149.60:443?path=%2Fassignment&security=tls&insecure=0&e
 trojan://humanity@render.com:443?path=%2Fassignment&security=tls&insecure=0&host=www.ignitelimit.com&ech=ip.gs%2Budp%3A%2F%2F8.8.8.8&type=ws&allowInsecure=0&sni=www.ignitelimit.com#%3E%3E%40MTproxy22_v2ray
 trojan://humanity@172.67.149.60:443?path=%2Fassignment&security=tls&insecure=0&host=www.ignitelimit.com&ech=ip.gs%2Budp%3A%2F%2F8.8.8.8&type=ws&allowInsecure=0&sni=www.ignitelimit.com#%3E%3E%40configV2rayNG
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTp5dHcyYXdu@142.4.216.225:443#%3E%3E%40oneclickvpnkeys
+vless://c7e9c591-2764-423a-afca-efbd010fd396@104.21.70.21:8080?security=&fp=qq&type=ws&path=/&host=freeuse.firta.ru&encryption=none#%3E%3E@persianvpnhub
+ss://YWVzLTEyOC1nY206c2hhZG93c29ja3M=@141.98.101.181:443#%3E%3E@hope_net
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTp5dHcyYXdu@142.4.216.225:443#%3E%3E@oneclickvpnkeys
+ss://YWVzLTEyOC1nY206c2hhZG93c29ja3M=@158.173.20.208:443#%3E%3E@V2rayNG3
+vless://dc8eccdb-ecfa-435f-9ac1-5dc4882e7b51@162.19.228.119:80?security=&fp=qq&type=ws&path=/http&encryption=none#%3E%3E@V2rayNG3
+vmess://eyJhZGQiOiIxNjUuMTQwLjIxNi4xNDIiLCJhaWQiOiIwIiwiaG9zdCI6IiIsImlkIjoiYjY1YTJkNjktNTYzNC00MmEyLWU0YmUtNTRlOGE2MTc2OTAwIiwibmV0IjoidGNwIiwicGF0aCI6IiIsInBvcnQiOiI0NDMiLCJwcyI6Ij4+QHYybm9kZXMiLCJzY3kiOiJhdXRvIiwic25pIjoiIiwidGxzIjoiIiwidHlwZSI6Im5vbmUiLCJ2IjoiMiJ9
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTprMWRCT21PQjRvcWk3VW1wMzdhMWJR@193.29.139.147:8080#%3E%3ESUB
