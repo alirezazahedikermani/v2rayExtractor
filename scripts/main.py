@@ -2,8 +2,10 @@ import base64
 import html
 import json
 import logging
+import ipaddress
 import os
 import re
+import socket
 import subprocess
 import time
 from concurrent.futures import ThreadPoolExecutor
@@ -103,6 +105,11 @@ SUB_CHECKER_DIR = Path("sub-checker")
 CHECK_BATCH_SIZE = 200
 
 OLDCONFIGS_DIR = Path("oldconfigs")
+
+# ip-api.com free endpoint: 100 IPs per batch request, 15 requests per minute.
+GEOIP_BATCH_URL = "http://ip-api.com/batch"
+GEOIP_BATCH_SIZE = 100
+GEOIP_BATCH_PAUSE = 5
 
 def full_unquote(s: str) -> str:
 
@@ -345,6 +352,164 @@ def run_sub_checker(input_configs: List[str]) -> List[str]:
         logging.error(f"An error occurred while running sub-checker: {e}")
         return []
 
+def extract_host(config: str) -> str:
+    """Return the server host of a config URI, or "" when it cannot be read."""
+
+    try:
+        base_uri = config.split('#', 1)[0]
+
+        if base_uri.startswith("vmess://"):
+            encoded = base_uri.replace("vmess://", "")
+            encoded += '=' * (-len(encoded) % 4)
+            data = json.loads(base64.b64decode(encoded).decode('utf-8', errors='ignore'))
+            return str(data.get("add", "")).strip()
+
+        netloc = base_uri.split("://", 1)[1].split("/", 1)[0].split("?", 1)[0]
+
+        if "@" not in netloc and base_uri.startswith("ss://"):
+            # ss:// often encodes "method:password@host:port" as one base64 blob.
+            padded = netloc + '=' * (-len(netloc) % 4)
+            try:
+                netloc = base64.b64decode(padded).decode('utf-8', errors='ignore')
+            except Exception:
+                pass
+
+        if "@" in netloc:
+            netloc = netloc.rsplit("@", 1)[1]
+
+        if netloc.startswith("["):  # bracketed IPv6
+            return netloc[1:netloc.index("]")]
+
+        return netloc.rsplit(":", 1)[0] if ":" in netloc else netloc
+    except Exception:
+        return ""
+
+
+def resolve_to_ip(host: str) -> str:
+    """Resolve a host name to an IP, passing through addresses unchanged."""
+
+    if not host:
+        return ""
+    try:
+        ipaddress.ip_address(host)
+        return host
+    except ValueError:
+        pass
+    try:
+        return socket.gethostbyname(host)
+    except Exception:
+        return ""
+
+
+def lookup_country_codes(hosts: List[str]) -> Dict[str, str]:
+    """Map each host to an ISO country code using ip-api.com's batch endpoint."""
+
+    host_to_ip = {}
+    unique_hosts = sorted({host for host in hosts if host})
+    if not unique_hosts:
+        return {}
+
+    with ThreadPoolExecutor(max_workers=32) as executor:
+        for host, ip in zip(unique_hosts, executor.map(resolve_to_ip, unique_hosts)):
+            if ip:
+                host_to_ip[host] = ip
+
+    unique_ips = sorted(set(host_to_ip.values()))
+    logging.info(f"Looking up countries for {len(unique_ips)} IPs...")
+
+    ip_to_code = {}
+    for index in range(0, len(unique_ips), GEOIP_BATCH_SIZE):
+        batch = unique_ips[index:index + GEOIP_BATCH_SIZE]
+        try:
+            response = requests.post(
+                GEOIP_BATCH_URL,
+                json=[{"query": ip, "fields": "status,countryCode,query"} for ip in batch],
+                timeout=30,
+            )
+            response.raise_for_status()
+            for entry in response.json():
+                if entry.get("status") == "success" and entry.get("countryCode"):
+                    ip_to_code[entry.get("query")] = entry["countryCode"].upper()
+        except Exception as e:
+            logging.warning(f"Country lookup failed for a batch of {len(batch)} IPs: {e}")
+
+        if index + GEOIP_BATCH_SIZE < len(unique_ips):
+            time.sleep(GEOIP_BATCH_PAUSE)
+
+    return {
+        host: ip_to_code[ip]
+        for host, ip in host_to_ip.items()
+        if ip in ip_to_code
+    }
+
+
+def country_flag(country_code: str) -> str:
+    """Return the flag emoji for an ISO country code, or a placeholder."""
+
+    try:
+        country = pycountry.countries.get(alpha_2=country_code)
+        if country and hasattr(country, 'flag'):
+            return country.flag
+    except Exception:
+        pass
+    return "\U0001F3F3"
+
+
+def prepend_country(prefix: str, name: str) -> str:
+    """Put the country prefix in front of a config name, replacing an old one."""
+
+    # Drop a prefix added by an earlier run so names do not stack up.
+    name = re.sub(r'^\S+ [A-Z]{2} \| ', '', name).strip()
+    return f"{prefix} | {name}" if name else prefix
+
+
+def add_country_to_names(configs: List[str]) -> List[str]:
+    """Prefix every config name with the flag and code of its server's country.
+
+    The country comes from the server IP. Configs whose country cannot be
+    determined keep their original name.
+    """
+
+    hosts = [extract_host(config) for config in configs]
+    host_countries = lookup_country_codes(hosts)
+
+    named_configs = []
+    tagged = 0
+    for config, host in zip(configs, hosts):
+        country_code = host_countries.get(host)
+        if not country_code:
+            named_configs.append(config)
+            continue
+
+        prefix = f"{country_flag(country_code)} {country_code}"
+
+        if config.startswith("vmess://"):
+            # vmess clients read the name from the "ps" field of the encoded
+            # JSON, not from the fragment.
+            try:
+                encoded = config.split('#', 1)[0].replace("vmess://", "")
+                encoded += '=' * (-len(encoded) % 4)
+                data = json.loads(base64.b64decode(encoded).decode('utf-8', errors='ignore'))
+                data["ps"] = prepend_country(prefix, str(data.get("ps", "")))
+                rewritten = base64.b64encode(
+                    json.dumps(data, ensure_ascii=False).encode('utf-8')
+                ).decode('utf-8')
+                named_configs.append(f"vmess://{rewritten}")
+                tagged += 1
+            except Exception as e:
+                logging.warning(f"Could not rename vmess config: {config[:40]}... Error: {e}")
+                named_configs.append(config)
+            continue
+
+        base_uri, _, tag = config.partition('#')
+        tag = prepend_country(prefix, full_unquote(tag))
+        named_configs.append(f"{base_uri}#{tag}")
+        tagged += 1
+
+    logging.info(f"Added country names to {tagged}/{len(configs)} configs.")
+    return named_configs
+
+
 def process_and_save_results(checked_configs: List[str]) -> Dict[str, int]:
     if not checked_configs:
         logging.warning("No checked configs to process.")
@@ -502,7 +667,10 @@ def main():
 
     logging.info(f"Sub-checker returned {len(checked_configs)} valid configs in total.")
 
-    logging.info("Step 5: Processing, saving results, and getting counts...")
+    logging.info("Step 5: Naming configs by their server country...")
+    checked_configs = add_country_to_names(checked_configs)
+
+    logging.info("Step 6: Processing, saving results, and getting counts...")
     protocol_counts = process_and_save_results(checked_configs)
 
     if SEND_TO_TELEGRAM:
