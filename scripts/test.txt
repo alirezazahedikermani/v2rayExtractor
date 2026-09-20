@@ -33,3 +33,11 @@ trojan://mitivpn@167.82.76.7:443?security=tls&sni=ssl.fastly.com&alpn=http/1.1&a
 trojan://humanity@104.19.229.21:443?security=tls&sni=www.calmlunch.com&allowInsecure=1&fp=qq&type=ws&path=/assignment&host=www.calmlunch.com#%F0%9F%87%A8%F0%9F%87%A6%20CA%20%7C%20%3E%3ESUB
 vmess://eyJhZGQiOiIxODguMTE0Ljk2LjE5IiwiYWlkIjoiMCIsImhvc3QiOiJnb29nbGUud2hhdHNhcHAuc25hcHAudG9yb2IuYmFzYWxhbS5mb3J0cmVzc2hvc3QuaXIuIiwiaWQiOiI0Nzk1MjZjZC01MDExLTQzY2YtYTc4OC01MDRkYTk1ZTA3YzIiLCJuZXQiOiJ3cyIsInBhdGgiOiIvIiwicG9ydCI6IjgwIiwicHMiOiLwn4eo8J+HpiBDQSB8ID4+U1VCIiwic2N5IjoiYXV0byIsInNuaSI6IiIsInRscyI6IiIsInR5cGUiOiJub25lIiwidiI6IjIifQ==
 trojan://humanity@5.78.92.27:8443?security=tls&sni=www.calmlunch.com&allowInsecure=1&fp=qq&type=ws&path=/assignment&host=www.calmlunch.com#%F0%9F%87%BA%F0%9F%87%B8%20US%20%7C%20%3E%3ESUB
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTprMWRCT21PQjRvcWk3VW1wMzdhMWJR@82.38.31.202:8080#%3E%3E@MTproxy22_v2ray
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpRQ1hEeHVEbFRUTUQ3anRnSFVqSW9q@193.29.139.168:8080#%3E%3E@Express_freevpn
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTprMWRCT21PQjRvcWk3VW1wMzdhMWJR@82.38.31.199:8080#%3E%3E@v2nodes
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTprMWRCT21PQjRvcWk3VW1wMzdhMWJR@82.38.31.211:8080#%3E%3E@v2rayNG_Matsuri
+trojan://humanity@8.47.69.0:443?security=tls&sni=www.pleadcourt.org&allowInsecure=1&fp=qq&type=ws&path=/assignment&host=www.pleadcourt.org#%F0%9F%87%BA%F0%9F%87%B8%20US%20%7C%20%3E%3E@outline_vpn
+vless://729dd5f2-f5ff-4070-8c10-863eceded0b1@195.123.235.177:443?security=reality&sni=gateway.icloud.com&fp=chrome&pbk=5B83otQ5ZQwtBFhR7xzsGJRXflkFKRJpQguYbE5JWGI&sid=c85d029f5e8eb393&type=tcp&flow=xtls-rprx-vision&encryption=none#%F0%9F%87%BA%F0%9F%87%B8%20US%20%7C%20%3E%3E@v2rayng_fast
+vless://9f73cf9a-c68f-4e6d-90f0-e66b64f52f8a@192.145.31.5:443?security=&fp=qq&type=ws&path=/&encryption=none#%3E%3E@oneclickvpnkeys
+vmess://eyJhZGQiOiIxMzIuMTQ1LjgwLjIzMCIsImFpZCI6IjAiLCJob3N0IjoiIiwiaWQiOiI1MTU1ODYwZS1kMDdkLTQ2YzMtOTEyOC0zYWZiZDg0NjI2YzciLCJuZXQiOiJ3cyIsInBhdGgiOiIvY2N0djEzLm0zdTgiLCJwb3J0IjoiODAiLCJwcyI6IvCfh7Dwn4e3IEtSIHwgPj5TVUIiLCJzY3kiOiJhdXRvIiwic25pIjoia3IwMi5hMGEueHl6IiwidGxzIjoiIiwidHlwZSI6Im5vbmUiLCJ2IjoiMiJ9
