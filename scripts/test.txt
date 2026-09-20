@@ -41,3 +41,7 @@ trojan://humanity@8.47.69.0:443?security=tls&sni=www.pleadcourt.org&allowInsecur
 vless://729dd5f2-f5ff-4070-8c10-863eceded0b1@195.123.235.177:443?security=reality&sni=gateway.icloud.com&fp=chrome&pbk=5B83otQ5ZQwtBFhR7xzsGJRXflkFKRJpQguYbE5JWGI&sid=c85d029f5e8eb393&type=tcp&flow=xtls-rprx-vision&encryption=none#%F0%9F%87%BA%F0%9F%87%B8%20US%20%7C%20%3E%3E@v2rayng_fast
 vless://9f73cf9a-c68f-4e6d-90f0-e66b64f52f8a@192.145.31.5:443?security=&fp=qq&type=ws&path=/&encryption=none#%3E%3E@oneclickvpnkeys
 vmess://eyJhZGQiOiIxMzIuMTQ1LjgwLjIzMCIsImFpZCI6IjAiLCJob3N0IjoiIiwiaWQiOiI1MTU1ODYwZS1kMDdkLTQ2YzMtOTEyOC0zYWZiZDg0NjI2YzciLCJuZXQiOiJ3cyIsInBhdGgiOiIvY2N0djEzLm0zdTgiLCJwb3J0IjoiODAiLCJwcyI6IvCfh7Dwn4e3IEtSIHwgPj5TVUIiLCJzY3kiOiJhdXRvIiwic25pIjoia3IwMi5hMGEueHl6IiwidGxzIjoiIiwidHlwZSI6Im5vbmUiLCJ2IjoiMiJ9
+hysteria2://9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z@162.249.126.7:8443?security=tls&insecure=0&sni=hopp-germany-new.ddnsguru.com#%F0%9F%87%A9%F0%9F%87%AA%20DE%20%7C%20%3E%3E%40v2rayNG_Matsuri
+hysteria2://Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0@85.204.107.184:8443?security=tls&insecure=0&sni=hopp-romania-new.roxa.org#%3E%3ESUB
+hysteria2://Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0@85.204.107.177:8443?security=tls&insecure=0&sni=hopp-romania-new.roxa.org#%3E%3ESUB
+hysteria2://f317b5d6-d399-4d3d-a051-89d674ae953c@msk.frkn.org:443?security=tls&insecure=0#%F0%9F%87%B7%F0%9F%87%BA%20RU%20%7C%20%3E%3E%40v2rayNG_Matsuri
